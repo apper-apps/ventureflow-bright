@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import NavItem from "@/components/molecules/NavItem";
+
 const Sidebar = ({ collapsed, onToggle }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -123,7 +124,7 @@ const Sidebar = ({ collapsed, onToggle }) => {
               <p className="text-xs text-gray-600">
                 Get help with your business plan
               </p>
-<Button
+              <Button
                 variant="ghost"
                 size="sm"
                 className="w-full justify-start text-xs"
@@ -183,7 +184,7 @@ const Sidebar = ({ collapsed, onToggle }) => {
                 exit={{ opacity: 0, y: 10 }}
                 className="absolute bottom-full left-0 w-full mb-2 bg-white border border-gray-200 rounded-lg shadow-premium p-2 space-y-1"
               >
-<button 
+                <button 
                   onClick={() => {
                     toast.info('Opening user profile...');
                     setTimeout(() => {
@@ -195,7 +196,7 @@ const Sidebar = ({ collapsed, onToggle }) => {
                   <ApperIcon name="User" size={14} />
                   <span>Profile</span>
                 </button>
-<button 
+                <button 
                   onClick={() => {
                     toast.info('Redirecting to billing...');
                     setTimeout(() => {
@@ -208,7 +209,7 @@ const Sidebar = ({ collapsed, onToggle }) => {
                   <span>Billing</span>
                 </button>
                 <div className="border-t border-gray-100 my-1"></div>
-<button 
+                <button 
                   onClick={() => {
                     const helpModal = document.createElement('div');
                     helpModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';

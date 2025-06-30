@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Chart from "react-apexcharts";
-import toast from "react-hot-toast";
-import ApperIcon from "@/components/ApperIcon";
-import Dashboard from "@/components/pages/Dashboard";
-import Badge from "@/components/atoms/Badge";
-import Card from "@/components/atoms/Card";
-import Button from "@/components/atoms/Button";
-import MetricCard from "@/components/molecules/MetricCard";
-import Error from "@/components/ui/Error";
-import Empty from "@/components/ui/Empty";
-import Loading from "@/components/ui/Loading";
-import { analyticsService } from "@/services/api/analyticsService";
-
+import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import Chart from 'react-apexcharts'
+import { toast } from 'react-toastify'
+import ApperIcon from '@/components/ApperIcon'
+import Dashboard from '@/components/pages/Dashboard'
+import Badge from '@/components/atoms/Badge'
+import Card from '@/components/atoms/Card'
+import Button from '@/components/atoms/Button'
+import MetricCard from '@/components/molecules/MetricCard'
+import Error from '@/components/ui/Error'
+import Empty from '@/components/ui/Empty'
+import Loading from '@/components/ui/Loading'
+import { analyticsService } from '@/services/api/analyticsService'
 const Analytics = () => {
   const [analytics, setAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
