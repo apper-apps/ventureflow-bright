@@ -1,0 +1,126 @@
+{
+  "projectsData": [
+    {
+      "Id": 1,
+      "name": "EcoTech Solutions",
+      "description": "Revolutionary sustainable technology platform focusing on renewable energy solutions for urban environments.",
+      "status": "in-progress",
+      "createdAt": "2024-01-15T10:30:00Z",
+      "updatedAt": "2024-01-28T14:22:00Z",
+      "completionPercentage": 75,
+      "completedSections": 6,
+      "totalSections": 8,
+      "validationScore": 82,
+      "projectedRevenue": 250,
+      "hasFinancialModel": true,
+      "hasValidation": true,
+      "isExported": false,
+      "sections": {
+        "executive-summary": {
+          "companyName": "EcoTech Solutions",
+          "missionStatement": "To accelerate the world's transition to sustainable energy through innovative urban solutions.",
+          "businessOverview": "EcoTech Solutions develops and deploys cutting-edge renewable energy technology specifically designed for urban environments.",
+          "keySuccessFactors": "Strategic partnerships, innovative technology, experienced team"
+        },
+        "company-description": {
+          "companyHistory": "Founded in 2023 by a team of renewable energy experts and urban planners.",
+          "legalStructure": "Delaware C-Corporation",
+          "location": "San Francisco, CA",
+          "companyValues": "Sustainability, Innovation, Community Impact"
+        }
+      }
+    },
+    {
+      "Id": 2,
+      "name": "FinanceFlow SaaS",
+      "description": "Advanced financial management platform designed for small to medium businesses with automated reporting and analytics.",
+      "status": "draft",
+      "createdAt": "2024-01-20T09:15:00Z",
+      "updatedAt": "2024-01-25T16:45:00Z",
+      "completionPercentage": 35,
+      "completedSections": 3,
+      "totalSections": 8,
+      "validationScore": 68,
+      "projectedRevenue": 180,
+      "hasFinancialModel": false,
+      "hasValidation": true,
+      "isExported": false,
+      "sections": {
+        "executive-summary": {
+          "companyName": "FinanceFlow",
+          "missionStatement": "Simplifying financial management for growing businesses.",
+          "businessOverview": "Cloud-based financial management platform with AI-powered insights."
+        }
+      }
+    },
+    {
+      "Id": 3,
+      "name": "HealthConnect Telemedicine",
+      "description": "Comprehensive telemedicine platform connecting patients with healthcare providers through secure, user-friendly technology.",
+      "status": "completed",
+      "createdAt": "2024-01-10T11:20:00Z",
+      "updatedAt": "2024-01-30T13:18:00Z",
+      "completionPercentage": 100,
+      "completedSections": 8,
+      "totalSections": 8,
+      "validationScore": 91,
+      "projectedRevenue": 420,
+      "hasFinancialModel": true,
+      "hasValidation": true,
+      "isExported": true,
+      "sections": {
+        "executive-summary": {
+          "companyName": "HealthConnect",
+          "missionStatement": "Making healthcare accessible to everyone, everywhere.",
+          "businessOverview": "Telemedicine platform with integrated health monitoring and prescription management.",
+          "keySuccessFactors": "Regulatory compliance, user experience, provider network"
+        }
+      }
+    },
+    {
+      "Id": 4,
+      "name": "EduTech Learning Platform",
+      "description": "Innovative online learning platform featuring adaptive AI-powered curriculum and gamified learning experiences.",
+      "status": "in-progress",
+      "createdAt": "2024-01-25T14:30:00Z",
+      "updatedAt": "2024-01-29T11:22:00Z",
+      "completionPercentage": 60,
+      "completedSections": 5,
+      "totalSections": 8,
+      "validationScore": 76,
+      "projectedRevenue": 320,
+      "hasFinancialModel": true,
+      "hasValidation": false,
+      "isExported": false,
+      "sections": {
+        "executive-summary": {
+          "companyName": "EduTech Learning",
+          "missionStatement": "Revolutionizing education through personalized, engaging learning experiences.",
+          "businessOverview": "AI-powered educational platform with adaptive learning algorithms."
+        }
+      }
+    },
+    {
+      "Id": 5,
+      "name": "FoodTracker Mobile App",
+      "description": "Smart nutrition tracking application with barcode scanning, meal planning, and personalized dietary recommendations.",
+      "status": "draft",
+      "createdAt": "2024-01-28T16:45:00Z",
+      "updatedAt": "2024-01-30T09:30:00Z",
+      "completionPercentage": 25,
+      "completedSections": 2,
+      "totalSections": 8,
+      "validationScore": 54,
+      "projectedRevenue": 85,
+      "hasFinancialModel": false,
+      "hasValidation": false,
+      "isExported": false,
+      "sections": {
+        "executive-summary": {
+          "companyName": "FoodTracker",
+          "missionStatement": "Empowering healthy living through intelligent nutrition tracking."
+        }
+      }
+    }
+  ]
+}

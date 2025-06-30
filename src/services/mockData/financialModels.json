@@ -1,0 +1,50 @@
+{
+  "financialModelsData": [
+    {
+      "Id": 1,
+      "projectId": 1,
+      "revenue": [
+        { "id": 1, "name": "Software Licenses", "amount": 180000, "recurring": true },
+        { "id": 2, "name": "Professional Services", "amount": 45000, "recurring": false },
+        { "id": 3, "name": "Maintenance Contracts", "amount": 25000, "recurring": true }
+      ],
+      "expenses": [
+        { "id": 1, "name": "Development Team", "amount": 120000, "category": "personnel" },
+        { "id": 2, "name": "Marketing & Sales", "amount": 35000, "category": "marketing" },
+        { "id": 3, "name": "Infrastructure", "amount": 18000, "category": "operational" },
+        { "id": 4, "name": "Legal & Compliance", "amount": 12000, "category": "administrative" }
+      ],
+      "projections": {
+        "monthly": [20000, 22000, 25000, 28000, 30000, 32000, 35000, 38000, 40000, 42000, 45000, 48000],
+        "quarterly": [67000, 85000, 113000, 135000],
+        "yearly": [250000, 350000, 500000]
+      },
+      "scenarios": ["conservative", "realistic", "optimistic"],
+      "createdAt": "2024-01-15T10:30:00Z",
+      "updatedAt": "2024-01-28T14:22:00Z"
+    },
+    {
+      "Id": 2,
+      "projectId": 3,
+      "revenue": [
+        { "id": 1, "name": "Consultation Fees", "amount": 280000, "recurring": true },
+        { "id": 2, "name": "Subscription Plans", "amount": 120000, "recurring": true },
+        { "id": 3, "name": "Premium Features", "amount": 20000, "recurring": true }
+      ],
+      "expenses": [
+        { "id": 1, "name": "Medical Staff", "amount": 180000, "category": "personnel" },
+        { "id": 2, "name": "Technology Platform", "amount": 45000, "category": "operational" },
+        { "id": 3, "name": "Compliance & Legal", "amount": 25000, "category": "administrative" },
+        { "id": 4, "name": "Marketing", "amount": 30000, "category": "marketing" }
+      ],
+      "projections": {
+        "monthly": [30000, 32000, 35000, 38000, 40000, 42000, 45000, 48000, 50000, 52000, 55000, 58000],
+        "quarterly": [97000, 120000, 143000, 165000],
+        "yearly": [420000, 580000, 750000]
+      },
+      "scenarios": ["conservative", "realistic", "optimistic"],
+      "createdAt": "2024-01-10T11:20:00Z",
+      "updatedAt": "2024-01-30T13:18:00Z"
+    }
+  ]
+}

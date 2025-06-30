@@ -1,0 +1,110 @@
+{
+  "validationData": [
+    {
+      "Id": 1,
+      "projectId": 1,
+      "framework": "lean-canvas",
+      "scores": {
+        "lean-canvas": {
+          "problem": 85,
+          "solution": 78,
+          "key-metrics": 72,
+          "value-proposition": 90,
+          "unfair-advantage": 65,
+          "channels": 75,
+          "customer-segments": 82,
+          "cost-structure": 80,
+          "revenue-streams": 88
+        },
+        "swot": {
+          "strengths": 85,
+          "weaknesses": 60,
+          "opportunities": 78,
+          "threats": 55
+        },
+        "customer-validation": {
+          "customer-interviews": 75,
+          "surveys": 70,
+          "mvp-feedback": 68,
+          "market-research": 82
+        }
+      },
+      "recommendations": [
+        {
+          "framework": "lean-canvas",
+          "title": "Strengthen Unfair Advantage",
+          "description": "Consider developing stronger intellectual property or exclusive partnerships to create a more defensible competitive position.",
+          "priority": "high",
+          "actionText": "Improve Strategy",
+          "actionUrl": "/validation"
+        },
+        {
+          "framework": "swot",
+          "title": "Address Market Threats",
+          "description": "Develop contingency plans for identified market threats, particularly regarding competition and regulatory changes.",
+          "priority": "medium",
+          "actionText": "Create Plan",
+          "actionUrl": "/validation"
+        },
+        {
+          "framework": "customer-validation",
+          "title": "Increase Customer Feedback",
+          "description": "Expand your customer interview program to gather more diverse feedback and validate key assumptions.",
+          "priority": "medium",
+          "actionText": "Schedule Interviews",
+          "actionUrl": "/validation"
+        }
+      ],
+      "timestamp": "2024-01-28T14:22:00Z"
+    },
+    {
+      "Id": 2,
+      "projectId": 3,
+      "framework": "customer-validation",
+      "scores": {
+        "lean-canvas": {
+          "problem": 92,
+          "solution": 88,
+          "key-metrics": 85,
+          "value-proposition": 95,
+          "unfair-advantage": 78,
+          "channels": 85,
+          "customer-segments": 90,
+          "cost-structure": 82,
+          "revenue-streams": 90
+        },
+        "swot": {
+          "strengths": 90,
+          "weaknesses": 70,
+          "opportunities": 85,
+          "threats": 65
+        },
+        "customer-validation": {
+          "customer-interviews": 88,
+          "surveys": 85,
+          "mvp-feedback": 82,
+          "market-research": 90
+        }
+      },
+      "recommendations": [
+        {
+          "framework": "lean-canvas",
+          "title": "Optimize Unfair Advantage",
+          "description": "Your validation scores are strong. Focus on enhancing your unique competitive advantages for market leadership.",
+          "priority": "low",
+          "actionText": "Optimize Strategy",
+          "actionUrl": "/validation"
+        },
+        {
+          "framework": "customer-validation",
+          "title": "Scale Customer Acquisition",
+          "description": "With strong validation scores, consider scaling your customer acquisition strategies and channels.",
+          "priority": "high",
+          "actionText": "Scale Operations",
+          "actionUrl": "/validation"
+        }
+      ],
+      "timestamp": "2024-01-30T13:18:00Z"
+    }
+  ]
+}

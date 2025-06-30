@@ -1,0 +1,136 @@
+{
+  "templatesData": [
+    {
+      "Id": 1,
+      "name": "SaaS Startup Business Plan",
+      "description": "Comprehensive template for software-as-a-service startups with focus on recurring revenue models, customer acquisition, and scalability metrics.",
+      "category": "tech",
+      "difficulty": "intermediate",
+      "sections": 12,
+      "estimatedTime": "4-6 hours",
+      "usageCount": 1247,
+      "featured": true
+    },
+    {
+      "Id": 2,
+      "name": "E-commerce Business Plan",
+      "description": "Complete business plan template for online retail businesses including inventory management, fulfillment strategies, and digital marketing approaches.",
+      "category": "retail",
+      "difficulty": "beginner",
+      "sections": 10,
+      "estimatedTime": "3-4 hours",
+      "usageCount": 892,
+      "featured": true
+    },
+    {
+      "Id": 3,
+      "name": "Consulting Services Plan",
+      "description": "Professional services business plan template covering service offerings, pricing strategies, client acquisition, and operational workflows.",
+      "category": "service",
+      "difficulty": "beginner",
+      "sections": 9,
+      "estimatedTime": "2-3 hours",
+      "usageCount": 634,
+      "featured": false
+    },
+    {
+      "Id": 4,
+      "name": "Mobile App Startup",
+      "description": "Specialized template for mobile application development companies with user acquisition strategies, monetization models, and technical roadmaps.",
+      "category": "tech",
+      "difficulty": "advanced",
+      "sections": 14,
+      "estimatedTime": "6-8 hours",
+      "usageCount": 567,
+      "featured": true
+    },
+    {
+      "Id": 5,
+      "name": "Restaurant Business Plan",
+      "description": "Food service business plan with menu development, location analysis, staffing plans, and health compliance requirements.",
+      "category": "service",
+      "difficulty": "intermediate",
+      "sections": 11,
+      "estimatedTime": "4-5 hours",
+      "usageCount": 453,
+      "featured": false
+    },
+    {
+      "Id": 6,
+      "name": "Manufacturing Startup",
+      "description": "Industrial business plan template covering production processes, supply chain management, quality control, and regulatory compliance.",
+      "category": "manufacturing",
+      "difficulty": "advanced",
+      "sections": 15,
+      "estimatedTime": "8-10 hours",
+      "usageCount": 287,
+      "featured": false
+    },
+    {
+      "Id": 7,
+      "name": "Digital Marketing Agency",
+      "description": "Service-based business plan for digital marketing agencies with client acquisition strategies, service packages, and team scaling plans.",
+      "category": "service",
+      "difficulty": "intermediate",
+      "sections": 10,
+      "estimatedTime": "3-4 hours",
+      "usageCount": 398,
+      "featured": false
+    },
+    {
+      "Id": 8,
+      "name": "Tech Product Launch",
+      "description": "Product-focused business plan template for technology companies launching new products with go-to-market strategies and user adoption metrics.",
+      "category": "tech",
+      "difficulty": "intermediate",
+      "sections": 13,
+      "estimatedTime": "5-6 hours",
+      "usageCount": 712,
+      "featured": true
+    },
+    {
+      "Id": 9,
+      "name": "Subscription Box Service",
+      "description": "Recurring revenue business model template for subscription-based product services with customer retention and logistics strategies.",
+      "category": "retail",
+      "difficulty": "intermediate",
+      "sections": 11,
+      "estimatedTime": "4-5 hours",
+      "usageCount": 324,
+      "featured": false
+    },
+    {
+      "Id": 10,
+      "name": "Fintech Startup Plan",
+      "description": "Financial technology business plan with regulatory considerations, security protocols, and compliance frameworks for financial services.",
+      "category": "tech",
+      "difficulty": "advanced",
+      "sections": 16,
+      "estimatedTime": "8-12 hours",
+      "usageCount": 198,
+      "featured": false
+    },
+    {
+      "Id": 11,
+      "name": "Social Impact Enterprise",
+      "description": "Purpose-driven business plan template for social enterprises balancing profit with positive social and environmental impact.",
+      "category": "service",
+      "difficulty": "intermediate",
+      "sections": 12,
+      "estimatedTime": "5-6 hours",
+      "usageCount": 156,
+      "featured": false
+    },
+    {
+      "Id": 12,
+      "name": "Retail Store Business Plan",
+      "description": "Physical retail location business plan covering site selection, inventory management, customer experience, and local marketing strategies.",
+      "category": "retail",
+      "difficulty": "beginner",
+      "sections": 9,
+      "estimatedTime": "3-4 hours",
+      "usageCount": 287,
+      "featured": false
+    }
+  ]
+}

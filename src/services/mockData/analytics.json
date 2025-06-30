@@ -1,0 +1,57 @@
+{
+  "totalProjects": 12,
+  "avgCompletion": 68,
+  "avgValidationScore": 78,
+  "totalProjectedRevenue": 1250,
+  "projectStatusData": [45, 30, 20, 5],
+  "validationTrendData": [65, 70, 72, 75, 78, 80, 82, 85],
+  "revenueProjectionData": {
+    "conservative": [85, 92, 88, 95, 102, 98],
+    "optimistic": [120, 135, 145, 155, 165, 175]
+  },
+  "insights": [
+    {
+      "type": "positive",
+      "title": "Strong Validation Scores",
+      "description": "Your average validation score of 78% is above industry benchmark of 65%."
+    },
+    {
+      "type": "warning",
+      "title": "Completion Rate Opportunity",
+      "description": "Consider focusing on completing more sections to improve overall plan quality."
+    },
+    {
+      "type": "info",
+      "title": "Revenue Growth Trend",
+      "description": "Your projected revenue shows consistent month-over-month growth patterns."
+    },
+    {
+      "type": "positive",
+      "title": "Active Project Management",
+      "description": "You have a healthy mix of projects in different stages of development."
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Complete Financial Models",
+      "description": "3 of your projects are missing detailed financial projections. Adding these will strengthen your plans significantly.",
+      "priority": "high",
+      "actionText": "Add Financial Models",
+      "actionUrl": "/financial"
+    },
+    {
+      "title": "Enhance Validation Frameworks",
+      "description": "Consider using multiple validation frameworks for more comprehensive business model validation.",
+      "priority": "medium",
+      "actionText": "Improve Validation",
+      "actionUrl": "/validation"
+    },
+    {
+      "title": "Export and Share Plans",
+      "description": "Your completed plans are ready for export. Share them with stakeholders or potential investors.",
+      "priority": "low",
+      "actionText": "Export Plans",
+      "actionUrl": "/export"
+    }
+  ]
+}
