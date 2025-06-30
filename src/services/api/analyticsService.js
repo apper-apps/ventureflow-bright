@@ -1,4 +1,4 @@
-import { analyticsData } from '@/services/mockData/analytics.json';
+import analyticsData from '@/services/mockData/analytics.json';
 
 class AnalyticsService {
   constructor() {
