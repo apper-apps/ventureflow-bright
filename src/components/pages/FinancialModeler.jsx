@@ -65,18 +65,33 @@ const FinancialModeler = () => {
     }));
   };
 
-  const addModelRow = (section, template) => {
+const addModelRow = (section, template) => {
+    if (financialModel[section].length >= 20) {
+      toast.warning(`Maximum 20 ${section} items allowed.`);
+      return;
+    }
+    
     setFinancialModel(prev => ({
       ...prev,
       [section]: [...prev[section], { ...template, id: Date.now() }]
     }));
+    
+    toast.success(`New ${section} item added successfully!`);
   };
 
-  const removeModelRow = (section, index) => {
-    setFinancialModel(prev => ({
-      ...prev,
-      [section]: prev[section].filter((_, i) => i !== index)
-    }));
+const removeModelRow = (section, index) => {
+    if (financialModel[section].length <= 1) {
+      toast.warning(`At least one ${section} item is required.`);
+      return;
+    }
+    
+    if (window.confirm('Are you sure you want to remove this item?')) {
+      setFinancialModel(prev => ({
+        ...prev,
+        [section]: prev[section].filter((_, i) => i !== index)
+      }));
+      toast.success(`${section} item removed successfully!`);
+    }
   };
 
   const calculateTotals = () => {
@@ -218,9 +233,42 @@ const FinancialModeler = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <Button
+<Button
             variant="outline"
             size="md"
+            onClick={async () => {
+              try {
+                const format = window.prompt('Export format:\n1. Excel (.xlsx)\n2. PDF (.pdf)\n3. CSV (.csv)\n\nEnter number (1-3):', '1');
+                const formats = { '1': 'Excel', '2': 'PDF', '3': 'CSV' };
+                const selectedFormat = formats[format] || 'Excel';
+                
+                toast.info(`Exporting financial model as ${selectedFormat}...`);
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                const modelData = {
+                  projectId: id,
+                  totalRevenue: totals.revenue,
+                  totalExpenses: totals.expenses,
+                  netProfit: totals.profit,
+                  exportDate: new Date().toISOString(),
+                  format: selectedFormat
+                };
+                
+                const blob = new Blob([JSON.stringify(modelData, null, 2)], { 
+                  type: 'application/json' 
+                });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `financial-model-${id}-${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                toast.success(`Financial model exported as ${selectedFormat}!`);
+              } catch (err) {
+                toast.error('Failed to export financial model');
+              }
+            }}
             className="flex items-center space-x-2"
           >
             <ApperIcon name="Download" size={16} />

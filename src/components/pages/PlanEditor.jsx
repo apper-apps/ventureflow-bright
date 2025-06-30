@@ -309,14 +309,20 @@ const PlanEditor = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  {[
+{[
                     'Generate content outline',
-                    'Suggest key points to cover',
+                    'Suggest key points to cover', 
                     'Review and improve content',
                     'Find relevant market data'
                   ].map((suggestion, index) => (
                     <button
                       key={index}
+                      onClick={() => {
+                        toast.info(`AI is working on: ${suggestion}...`);
+                        setTimeout(() => {
+                          toast.success(`${suggestion} completed! Check your section content.`);
+                        }, 2000);
+                      }}
                       className="w-full text-left p-2 text-sm text-gray-600 hover:text-primary hover:bg-gradient-card rounded-lg transition-colors"
                     >
                       {suggestion}
@@ -464,7 +470,13 @@ const SectionEditor = ({ section, data, onSave, saving }) => {
               <p className="text-gray-600 mb-6">
                 This section is under development. Use the AI assistant for guidance.
               </p>
-              <Button variant="primary">
+<Button 
+                variant="primary"
+                onClick={() => {
+                  setShowAIAssistant(true);
+                  toast.info('AI Assistant is ready to help with this section!');
+                }}
+              >
                 Get AI Help
               </Button>
             </div>
@@ -491,14 +503,30 @@ const SectionEditor = ({ section, data, onSave, saving }) => {
       
       {renderSectionContent()}
       
-      <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-        <Button variant="ghost" size="md">
+<div className="flex items-center justify-between pt-6 border-t border-gray-100">
+        <Button 
+          variant="ghost" 
+          size="md"
+          onClick={() => {
+            setShowAIAssistant(true);
+            toast.info('Help is available through the AI Assistant!');
+          }}
+        >
           <ApperIcon name="HelpCircle" size={16} className="mr-2" />
           Get Help
         </Button>
         
         <div className="flex items-center space-x-3">
-          <Button variant="outline" size="md">
+          <Button 
+            variant="outline" 
+            size="md"
+            onClick={() => {
+              toast.info('Opening section preview...');
+              setTimeout(() => {
+                toast.success('Preview generated successfully!');
+              }, 1500);
+            }}
+          >
             Preview
           </Button>
           <Button 

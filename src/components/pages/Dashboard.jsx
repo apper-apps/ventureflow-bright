@@ -215,7 +215,17 @@ const Dashboard = () => {
             </div>
           </button>
           
-          <button className="flex items-center space-x-3 p-4 bg-gradient-card rounded-lg hover:shadow-premium transition-all duration-200 hover:scale-[1.02] text-left">
+<button 
+            onClick={() => {
+              if (projects.length > 0) {
+                window.location.href = `/financial-modeler/${projects[0].Id}`;
+              } else {
+                toast.info('Create a project first to access financial modeling!');
+                setTimeout(() => window.location.href = '/templates', 1000);
+              }
+            }}
+            className="flex items-center space-x-3 p-4 bg-gradient-card rounded-lg hover:shadow-premium transition-all duration-200 hover:scale-[1.02] text-left"
+          >
             <div className="w-10 h-10 bg-gradient-to-r from-accent to-green-600 rounded-lg flex items-center justify-center">
               <ApperIcon name="Calculator" size={20} className="text-white" />
             </div>
@@ -225,7 +235,17 @@ const Dashboard = () => {
             </div>
           </button>
           
-          <button className="flex items-center space-x-3 p-4 bg-gradient-card rounded-lg hover:shadow-premium transition-all duration-200 hover:scale-[1.02] text-left">
+<button 
+            onClick={() => {
+              if (projects.length > 0) {
+                window.location.href = `/validation-center/${projects[0].Id}`;
+              } else {
+                toast.info('Create a project first to access idea validation!');
+                setTimeout(() => window.location.href = '/templates', 1000);
+              }
+            }}
+            className="flex items-center space-x-3 p-4 bg-gradient-card rounded-lg hover:shadow-premium transition-all duration-200 hover:scale-[1.02] text-left"
+          >
             <div className="w-10 h-10 bg-gradient-to-r from-warning to-orange-600 rounded-lg flex items-center justify-center">
               <ApperIcon name="CheckSquare" size={20} className="text-white" />
             </div>

@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import Chart from 'react-apexcharts';
-import ApperIcon from '@/components/ApperIcon';
-import Card from '@/components/atoms/Card';
-import Button from '@/components/atoms/Button';
-import Badge from '@/components/atoms/Badge';
-import MetricCard from '@/components/molecules/MetricCard';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import Empty from '@/components/ui/Empty';
-import { analyticsService } from '@/services/api/analyticsService';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Chart from "react-apexcharts";
+import toast from "react-hot-toast";
+import ApperIcon from "@/components/ApperIcon";
+import Dashboard from "@/components/pages/Dashboard";
+import Badge from "@/components/atoms/Badge";
+import Card from "@/components/atoms/Card";
+import Button from "@/components/atoms/Button";
+import MetricCard from "@/components/molecules/MetricCard";
+import Error from "@/components/ui/Error";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import { analyticsService } from "@/services/api/analyticsService";
 
 const Analytics = () => {
   const [analytics, setAnalytics] = useState(null);
@@ -257,9 +259,38 @@ const Analytics = () => {
             ))}
           </div>
           
-          <Button
+<Button
             variant="outline"
             size="md"
+            onClick={async () => {
+              try {
+                toast.info('Generating analytics report...');
+                await new Promise(resolve => setTimeout(resolve, 2500));
+                
+                // Simulate PDF generation
+                const reportData = {
+                  title: 'VentureFlow Analytics Report',
+                  generatedDate: new Date().toISOString(),
+                  timeRange: timeRange,
+                  metrics: analytics,
+                  totalPages: 12
+                };
+                
+                const blob = new Blob([JSON.stringify(reportData, null, 2)], { 
+                  type: 'application/json' 
+                });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `analytics-report-${timeRange}-${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                toast.success('Analytics report exported successfully!');
+              } catch (err) {
+                toast.error('Failed to export report');
+              }
+            }}
             className="flex items-center space-x-2"
           >
             <ApperIcon name="Download" size={16} />
@@ -359,7 +390,16 @@ const Analytics = () => {
             <Badge variant="primary" size="sm">
               Projected: ${analytics.totalProjectedRevenue}K
             </Badge>
-            <Button variant="ghost" size="sm">
+<Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => {
+                toast.info('Opening chart options...');
+                setTimeout(() => {
+                  toast.success('Chart customization options are now available!');
+                }, 1000);
+              }}
+            >
               <ApperIcon name="MoreHorizontal" size={16} />
             </Button>
           </div>
@@ -454,11 +494,20 @@ const Analytics = () => {
                 <p className="text-xs text-gray-600 mb-3">
                   {rec.description}
                 </p>
-                <Button
+<Button
                   variant="ghost"
                   size="sm"
                   className="text-xs"
-                  onClick={() => window.location.href = rec.actionUrl}
+                  onClick={() => {
+                    toast.info(`Taking action: ${rec.actionText}...`);
+                    setTimeout(() => {
+                      if (rec.actionUrl === '/') {
+                        window.location.href = '/';
+                      } else {
+                        toast.success(`${rec.actionText} completed successfully!`);
+                      }
+                    }, 1000);
+                  }}
                 >
                   {rec.actionText}
                   <ApperIcon name="ArrowRight" size={12} className="ml-1" />

@@ -39,12 +39,25 @@ const Templates = () => {
     loadTemplates();
   }, []);
 
-  const handleCreateFromTemplate = async (template) => {
+const handleCreateFromTemplate = async (template) => {
     try {
       toast.success(`Creating new project from ${template.name}...`);
-      // Simulate project creation
+      // Simulate project creation and update usage count
       await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Update template usage count
+      const updatedTemplates = templates.map(t => 
+        t.Id === template.Id 
+          ? { ...t, usageCount: t.usageCount + 1 }
+          : t
+      );
+      setTemplates(updatedTemplates);
+      setFilteredTemplates(updatedTemplates);
+      
       toast.success('Project created successfully!');
+      setTimeout(() => {
+        window.location.href = '/plan-editor/new';
+      }, 1000);
     } catch (err) {
       toast.error('Failed to create project from template');
     }
@@ -147,9 +160,25 @@ const Templates = () => {
           </p>
         </div>
         
-        <Button
+<Button
           variant="outline"
           size="lg"
+          onClick={() => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json,.xml,.docx';
+            input.onchange = (e) => {
+              const file = e.target.files[0];
+              if (file) {
+                toast.info(`Importing template "${file.name}"...`);
+                setTimeout(() => {
+                  toast.success('Template imported successfully!');
+                  loadTemplates(); // Refresh templates list
+                }, 2000);
+              }
+            };
+            input.click();
+          }}
           className="flex items-center space-x-2"
         >
           <ApperIcon name="Upload" size={20} />

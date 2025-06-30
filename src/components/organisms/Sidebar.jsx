@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import ApperIcon from '@/components/ApperIcon';
-import NavItem from '@/components/molecules/NavItem';
-import Button from '@/components/atoms/Button';
-
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import toast from "react-hot-toast";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import NavItem from "@/components/molecules/NavItem";
 const Sidebar = ({ collapsed, onToggle }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -123,10 +123,25 @@ const Sidebar = ({ collapsed, onToggle }) => {
               <p className="text-xs text-gray-600">
                 Get help with your business plan
               </p>
-              <Button
+<Button
                 variant="ghost"
                 size="sm"
                 className="w-full justify-start text-xs"
+                onClick={() => {
+                  const aiModal = document.createElement('div');
+                  aiModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                  aiModal.innerHTML = `
+                    <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+                      <h3 class="text-lg font-semibold mb-4">AI Assistant</h3>
+                      <p class="text-sm text-gray-600 mb-4">Hello! I'm your AI assistant. How can I help you with your business plan today?</p>
+                      <div class="flex space-x-3">
+                        <button onclick="this.closest('.fixed').remove()" class="flex-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">Close</button>
+                        <button onclick="alert('AI chat feature coming soon!'); this.closest('.fixed').remove()" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Start Chat</button>
+                      </div>
+                    </div>
+                  `;
+                  document.body.appendChild(aiModal);
+                }}
               >
                 <ApperIcon name="MessageCircle" size={14} className="mr-2" />
                 Chat with AI
@@ -168,16 +183,50 @@ const Sidebar = ({ collapsed, onToggle }) => {
                 exit={{ opacity: 0, y: 10 }}
                 className="absolute bottom-full left-0 w-full mb-2 bg-white border border-gray-200 rounded-lg shadow-premium p-2 space-y-1"
               >
-                <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md flex items-center space-x-2">
+<button 
+                  onClick={() => {
+                    toast.info('Opening user profile...');
+                    setTimeout(() => {
+                      window.location.href = '/settings';
+                    }, 1000);
+                  }}
+                  className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md flex items-center space-x-2"
+                >
                   <ApperIcon name="User" size={14} />
                   <span>Profile</span>
                 </button>
-                <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md flex items-center space-x-2">
+<button 
+                  onClick={() => {
+                    toast.info('Redirecting to billing...');
+                    setTimeout(() => {
+                      window.location.href = '/settings';
+                    }, 1000);
+                  }}
+                  className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md flex items-center space-x-2"
+                >
                   <ApperIcon name="CreditCard" size={14} />
                   <span>Billing</span>
                 </button>
                 <div className="border-t border-gray-100 my-1"></div>
-                <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md flex items-center space-x-2">
+<button 
+                  onClick={() => {
+                    const helpModal = document.createElement('div');
+                    helpModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                    helpModal.innerHTML = `
+                      <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+                        <h3 class="text-lg font-semibold mb-4">Help & Support</h3>
+                        <div class="space-y-3">
+                          <p class="text-sm text-gray-600">• Email: support@ventureflow.app</p>
+                          <p class="text-sm text-gray-600">• Phone: 1-800-VENTURE</p>
+                          <p class="text-sm text-gray-600">• Chat: Available 24/7</p>
+                        </div>
+                        <button onclick="this.closest('.fixed').remove()" class="mt-4 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Close</button>
+                      </div>
+                    `;
+                    document.body.appendChild(helpModal);
+                  }}
+                  className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md flex items-center space-x-2"
+                >
                   <ApperIcon name="HelpCircle" size={14} />
                   <span>Help</span>
                 </button>
