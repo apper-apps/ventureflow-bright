@@ -14,9 +14,10 @@ function App() {
   return (
     <>
 <Routes>
-        <Route path="/" element={<Layout />}>
+<Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="plans/:id/edit" element={<PlanEditor />} />
+          <Route path="plan-editor/new/:templateId" element={<PlanEditor />} />
           <Route path="financial-modeler/:id" element={<FinancialModeler />} />
           <Route path="validation-center/:id" element={<ValidationCenter />} />
           <Route path="plan-editor" element={<PlanEditor />} />

@@ -43,9 +43,7 @@ const Templates = () => {
 
 const handleCreateFromTemplate = async (template) => {
     try {
-      toast.success(`Creating new project from ${template.name}...`);
-      // Simulate project creation and update usage count
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast.info(`Starting new project from ${template.name}...`);
       
       // Update template usage count
       const updatedTemplates = templates.map(t => 
@@ -55,12 +53,11 @@ const handleCreateFromTemplate = async (template) => {
       );
       setTemplates(updatedTemplates);
       setFilteredTemplates(updatedTemplates);
-toast.success('Project created successfully!');
-      setTimeout(() => {
-        navigate('/plans/new');
-      }, 1000);
+      
+      // Navigate to plan editor with template ID
+      navigate(`/plan-editor/new/${template.Id}`);
     } catch (err) {
-      toast.error('Failed to create project from template');
+      toast.error('Failed to start project from template');
     }
   };
 

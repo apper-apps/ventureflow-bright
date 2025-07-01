@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from 'react-toastify';
-import ApperIcon from '@/components/ApperIcon';
-import Card from '@/components/atoms/Card';
-import Button from '@/components/atoms/Button';
-import Input from '@/components/atoms/Input';
-import Badge from '@/components/atoms/Badge';
-import ProgressBar from '@/components/atoms/ProgressBar';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import { projectService } from '@/services/api/projectService';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import Badge from "@/components/atoms/Badge";
+import Card from "@/components/atoms/Card";
+import ProgressBar from "@/components/atoms/ProgressBar";
+import Input from "@/components/atoms/Input";
+import Button from "@/components/atoms/Button";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
+import { projectService } from "@/services/api/projectService";
 
 const PlanEditor = () => {
   const { id } = useParams();
@@ -140,12 +140,14 @@ const PlanEditor = () => {
             >
               <ApperIcon name="ArrowLeft" size={20} />
             </button>
-            <h1 className="text-2xl font-display font-bold text-secondary">
+<h1 className="text-2xl font-display font-bold text-secondary">
               {project.name}
             </h1>
-            <Badge variant="primary" size="sm">
-              {project.status.replace('-', ' ')}
-            </Badge>
+<div className="flex items-center space-x-2">
+              <Badge variant="primary" size="sm">
+                {project.status.replace('-', ' ')}
+              </Badge>
+            </div>
           </div>
           
           <div className="ml-11">
