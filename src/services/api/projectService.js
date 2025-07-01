@@ -53,9 +53,13 @@ async getAll() {
 
 async getById(id) {
     try {
-      // Convert to number and validate
+      // Validate and convert ID to number
+      if (id === null || id === undefined || id === '') {
+        throw new Error('Invalid project ID provided');
+      }
+      
       const numericId = Number(id);
-      if (!id || isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
+      if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
         throw new Error('Invalid project ID provided');
       }
 
@@ -128,7 +132,13 @@ async create(projectData) {
 
 async update(id, updateData) {
     try {
-      if (!id || typeof id !== 'number') {
+      // Validate and convert ID to number
+      if (id === null || id === undefined || id === '') {
+        throw new Error('Invalid project ID provided');
+      }
+      
+      const numericId = Number(id);
+      if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
         throw new Error('Invalid project ID provided');
       }
       
@@ -139,15 +149,15 @@ async update(id, updateData) {
       const operation = async () => {
         await new Promise(resolve => setTimeout(resolve, 350));
         
-        const index = this.projects.findIndex(p => p.Id === id);
+        const index = this.projects.findIndex(p => p.Id === numericId);
         if (index === -1) {
-          throw new Error(`Project with ID ${id} not found`);
+          throw new Error(`Project with ID ${numericId} not found`);
         }
         
         this.projects[index] = {
           ...this.projects[index],
           ...updateData,
-          Id: id, // Ensure ID doesn't change
+          Id: numericId, // Ensure ID doesn't change
           updatedAt: new Date().toISOString()
         };
         
@@ -172,20 +182,26 @@ async update(id, updateData) {
 
 async delete(id) {
     try {
-      if (!id || typeof id !== 'number') {
+      // Validate and convert ID to number
+      if (id === null || id === undefined || id === '') {
+        throw new Error('Invalid project ID provided');
+      }
+      
+      const numericId = Number(id);
+      if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
         throw new Error('Invalid project ID provided');
       }
 
       const operation = async () => {
         await new Promise(resolve => setTimeout(resolve, 300));
         
-        const index = this.projects.findIndex(p => p.Id === id);
+        const index = this.projects.findIndex(p => p.Id === numericId);
         if (index === -1) {
-          throw new Error(`Project with ID ${id} not found`);
+          throw new Error(`Project with ID ${numericId} not found`);
         }
         
         this.projects.splice(index, 1);
-        return { success: true, deletedId: id };
+        return { success: true, deletedId: numericId };
       };
 
       return await this.withTimeout(this.withRetry(operation));
