@@ -1,8 +1,8 @@
-import { templatesData } from '@/services/mockData/templates.json';
+import templatesData from '@/services/mockData/templates.json';
 
 class TemplateService {
   constructor() {
-    this.templates = [...templatesData];
+    this.templates = [...templatesData.templatesData];
   }
 
   async getAll() {

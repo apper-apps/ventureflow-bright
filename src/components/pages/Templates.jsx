@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import ApperIcon from '@/components/ApperIcon';
@@ -12,6 +13,7 @@ import Empty from '@/components/ui/Empty';
 import { templateService } from '@/services/api/templateService';
 
 const Templates = () => {
+  const navigate = useNavigate();
   const [templates, setTemplates] = useState([]);
   const [filteredTemplates, setFilteredTemplates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,10 +55,9 @@ const handleCreateFromTemplate = async (template) => {
       );
       setTemplates(updatedTemplates);
       setFilteredTemplates(updatedTemplates);
-      
-      toast.success('Project created successfully!');
+toast.success('Project created successfully!');
       setTimeout(() => {
-        window.location.href = '/plan-editor/new';
+        navigate('/plan-editor');
       }, 1000);
     } catch (err) {
       toast.error('Failed to create project from template');
