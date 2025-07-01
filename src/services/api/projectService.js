@@ -53,7 +53,9 @@ async getAll() {
 
 async getById(id) {
     try {
-      if (!id || typeof id !== 'number') {
+      // Convert to number and validate
+      const numericId = Number(id);
+      if (!id || isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
         throw new Error('Invalid project ID provided');
       }
 
@@ -64,9 +66,9 @@ async getById(id) {
           throw new Error('Projects data not available');
         }
         
-        const project = this.projects.find(p => p.Id === id);
+        const project = this.projects.find(p => p.Id === numericId);
         if (!project) {
-          throw new Error(`Project with ID ${id} not found`);
+          throw new Error(`Project with ID ${numericId} not found`);
         }
         
         return { ...project };
