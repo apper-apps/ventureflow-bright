@@ -52,19 +52,22 @@ async getAll() {
   }
 
 async getById(id) {
-    // Validate project ID
-    if (!id || typeof id !== 'string' || id.trim() === '') {
-      throw new Error('Invalid project ID provided');
+    // Validate project ID - accept string, number, or convertible values
+    if (id == null || id === '' || (typeof id === 'string' && id.trim() === '') || (typeof id === 'number' && isNaN(id))) {
+      throw new Error('Invalid project ID provided - ID cannot be null, undefined, empty, or NaN');
     }
+    
+    // Convert ID to string for consistent processing
+    const projectId = String(id);
     
     try {
       const operation = async () => {
         await new Promise(resolve => setTimeout(resolve, Math.random() * 200 + 100));
         
-        const project = this.projects.find(p => p.id === id);
+        const project = this.projects.find(p => p.id === projectId);
         
         if (!project) {
-          throw new Error(`Project with ID ${id} not found`);
+          throw new Error(`Project with ID ${projectId} not found`);
         }
         
         return {
@@ -125,23 +128,26 @@ async create(projectData) {
     }
   }
 async update(id, updateData) {
-    // Validate project ID
-    if (!id || typeof id !== 'string' || id.trim() === '') {
-      throw new Error('Invalid project ID provided');
+    // Validate project ID - accept string, number, or convertible values
+    if (id == null || id === '' || (typeof id === 'string' && id.trim() === '') || (typeof id === 'number' && isNaN(id))) {
+      throw new Error('Invalid project ID provided - ID cannot be null, undefined, empty, or NaN');
     }
     
     if (!updateData || typeof updateData !== 'object') {
       throw new Error('Invalid update data provided');
     }
     
+    // Convert ID to string for consistent processing
+    const projectId = String(id);
+    
     try {
       const operation = async () => {
         await new Promise(resolve => setTimeout(resolve, Math.random() * 300 + 200));
         
-        const projectIndex = this.projects.findIndex(p => p.id === id);
+        const projectIndex = this.projects.findIndex(p => p.id === projectId);
         
         if (projectIndex === -1) {
-          throw new Error(`Project with ID ${id} not found`);
+          throw new Error(`Project with ID ${projectId} not found`);
         }
         
         // Validate required fields
@@ -152,7 +158,7 @@ async update(id, updateData) {
         const updatedProject = {
           ...this.projects[projectIndex],
           ...updateData,
-          id, // Ensure ID doesn't change
+          id: projectId, // Ensure ID doesn't change and is consistent
           lastModified: new Date().toISOString()
         };
         
@@ -179,19 +185,22 @@ async update(id, updateData) {
   }
 
 async delete(id) {
-    // Validate project ID
-    if (!id || typeof id !== 'string' || id.trim() === '') {
-      throw new Error('Invalid project ID provided');
+    // Validate project ID - accept string, number, or convertible values
+    if (id == null || id === '' || (typeof id === 'string' && id.trim() === '') || (typeof id === 'number' && isNaN(id))) {
+      throw new Error('Invalid project ID provided - ID cannot be null, undefined, empty, or NaN');
     }
+    
+    // Convert ID to string for consistent processing
+    const projectId = String(id);
     
     try {
       const operation = async () => {
         await new Promise(resolve => setTimeout(resolve, Math.random() * 250 + 150));
         
-        const projectIndex = this.projects.findIndex(p => p.id === id);
+        const projectIndex = this.projects.findIndex(p => p.id === projectId);
         
         if (projectIndex === -1) {
-          throw new Error(`Project with ID ${id} not found`);
+          throw new Error(`Project with ID ${projectId} not found`);
         }
         
         // Remove the project from mock data
