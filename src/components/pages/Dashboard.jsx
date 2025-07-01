@@ -50,7 +50,7 @@ const Dashboard = () => {
     setFilteredProjects(filtered);
   }, [projects, searchTerm]);
 
-  const handleCreateProject = () => {
+const handleCreateProject = () => {
     toast.success('Redirecting to templates...');
     // Navigate to templates page
     window.location.href = '/templates';

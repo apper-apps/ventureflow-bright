@@ -13,12 +13,13 @@ import Settings from '@/components/pages/Settings';
 function App() {
   return (
     <>
-      <Routes>
+<Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="plans/:id/edit" element={<PlanEditor />} />
-          <Route path="plans/:id/financial" element={<FinancialModeler />} />
-          <Route path="plans/:id/validation" element={<ValidationCenter />} />
+          <Route path="financial-modeler/:id" element={<FinancialModeler />} />
+          <Route path="validation-center/:id" element={<ValidationCenter />} />
+          <Route path="plan-editor" element={<PlanEditor />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="templates" element={<Templates />} />
           <Route path="settings" element={<Settings />} />

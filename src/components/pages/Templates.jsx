@@ -57,7 +57,7 @@ const handleCreateFromTemplate = async (template) => {
       setFilteredTemplates(updatedTemplates);
 toast.success('Project created successfully!');
       setTimeout(() => {
-        navigate('/plan-editor');
+        navigate('/plans/new');
       }, 1000);
     } catch (err) {
       toast.error('Failed to create project from template');
