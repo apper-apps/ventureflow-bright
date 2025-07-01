@@ -1,4 +1,4 @@
-import { projectsData } from '@/services/mockData/projects.json';
+import { projectsData } from "@/services/mockData/projects.json";
 
 class ProjectService {
   constructor() {
@@ -52,30 +52,25 @@ async getAll() {
   }
 
 async getById(id) {
+    // Validate project ID
+    if (!id || typeof id !== 'string' || id.trim() === '') {
+      throw new Error('Invalid project ID provided');
+    }
+    
     try {
-      // Validate and convert ID to number
-      if (id === null || id === undefined || id === '') {
-        throw new Error('Invalid project ID provided');
-      }
-      
-      const numericId = Number(id);
-      if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
-        throw new Error('Invalid project ID provided');
-      }
-
       const operation = async () => {
-        await new Promise(resolve => setTimeout(resolve, 250));
+        await new Promise(resolve => setTimeout(resolve, Math.random() * 200 + 100));
         
-        if (!this.projects || this.projects.length === 0) {
-          throw new Error('Projects data not available');
-        }
+        const project = this.projects.find(p => p.id === id);
         
-        const project = this.projects.find(p => p.Id === numericId);
         if (!project) {
-          throw new Error(`Project with ID ${numericId} not found`);
+          throw new Error(`Project with ID ${id} not found`);
         }
         
-        return { ...project };
+        return {
+          ...project,
+          lastModified: new Date().toISOString()
+        };
       };
 
       return await this.withTimeout(this.withRetry(operation));
@@ -104,12 +99,12 @@ async create(projectData) {
         await new Promise(resolve => setTimeout(resolve, 400));
         
         const newId = this.projects.length > 0 
-          ? Math.max(...this.projects.map(p => p.Id || 0)) + 1 
+          ? Math.max(...this.projects.map(p => p.id || 0)) + 1 
           : 1;
           
         const newProject = {
           ...projectData,
-          Id: newId,
+          id: newId,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         };
@@ -129,39 +124,42 @@ async create(projectData) {
       throw new Error('Failed to create project. Please try again later.');
     }
   }
-
 async update(id, updateData) {
+    // Validate project ID
+    if (!id || typeof id !== 'string' || id.trim() === '') {
+      throw new Error('Invalid project ID provided');
+    }
+    
+    if (!updateData || typeof updateData !== 'object') {
+      throw new Error('Invalid update data provided');
+    }
+    
     try {
-      // Validate and convert ID to number
-      if (id === null || id === undefined || id === '') {
-        throw new Error('Invalid project ID provided');
-      }
-      
-      const numericId = Number(id);
-      if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
-        throw new Error('Invalid project ID provided');
-      }
-      
-      if (!updateData || typeof updateData !== 'object') {
-        throw new Error('Invalid update data provided');
-      }
-
       const operation = async () => {
-        await new Promise(resolve => setTimeout(resolve, 350));
+        await new Promise(resolve => setTimeout(resolve, Math.random() * 300 + 200));
         
-        const index = this.projects.findIndex(p => p.Id === numericId);
-        if (index === -1) {
-          throw new Error(`Project with ID ${numericId} not found`);
+        const projectIndex = this.projects.findIndex(p => p.id === id);
+        
+        if (projectIndex === -1) {
+          throw new Error(`Project with ID ${id} not found`);
         }
         
-        this.projects[index] = {
-          ...this.projects[index],
+        // Validate required fields
+        if (updateData.name && updateData.name.trim().length === 0) {
+          throw new Error('Project name cannot be empty');
+        }
+        
+        const updatedProject = {
+          ...this.projects[projectIndex],
           ...updateData,
-          Id: numericId, // Ensure ID doesn't change
-          updatedAt: new Date().toISOString()
+          id, // Ensure ID doesn't change
+          lastModified: new Date().toISOString()
         };
         
-        return { ...this.projects[index] };
+        // Update the mock data
+        this.projects[projectIndex] = updatedProject;
+        
+        return updatedProject;
       };
 
       return await this.withTimeout(this.withRetry(operation));
@@ -181,27 +179,28 @@ async update(id, updateData) {
   }
 
 async delete(id) {
+    // Validate project ID
+    if (!id || typeof id !== 'string' || id.trim() === '') {
+      throw new Error('Invalid project ID provided');
+    }
+    
     try {
-      // Validate and convert ID to number
-      if (id === null || id === undefined || id === '') {
-        throw new Error('Invalid project ID provided');
-      }
-      
-      const numericId = Number(id);
-      if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
-        throw new Error('Invalid project ID provided');
-      }
-
       const operation = async () => {
-        await new Promise(resolve => setTimeout(resolve, 300));
+        await new Promise(resolve => setTimeout(resolve, Math.random() * 250 + 150));
         
-        const index = this.projects.findIndex(p => p.Id === numericId);
-        if (index === -1) {
-          throw new Error(`Project with ID ${numericId} not found`);
+        const projectIndex = this.projects.findIndex(p => p.id === id);
+        
+        if (projectIndex === -1) {
+          throw new Error(`Project with ID ${id} not found`);
         }
         
-        this.projects.splice(index, 1);
-        return { success: true, deletedId: numericId };
+        // Remove the project from mock data
+        const deletedProject = this.projects.splice(projectIndex, 1)[0];
+        
+        return {
+          message: 'Project deleted successfully',
+          deletedProject
+        };
       };
 
       return await this.withTimeout(this.withRetry(operation));
